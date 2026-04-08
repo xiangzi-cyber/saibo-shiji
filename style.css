@@ -1,0 +1,427 @@
+/* ================================================
+   赛博史记 — Retro Arcade Comic Site
+   ================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* ---------- CSS Variables ---------- */
+:root {
+  --bg:        #0d0d1a;
+  --bg-card:   #13132b;
+  --bg-card2:  #1a1a36;
+  --gold:      #FFD700;
+  --gold-dim:  #c9a800;
+  --white:     #f0f0f0;
+  --accent:    #8b5cf6;
+  --accent2:   #06b6d4;
+  --border:    #2e2e5e;
+  --pixel:     'Press Start 2P', monospace;
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+/* ---------- Background with halftone dots ---------- */
+body {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(circle, #ffffff08 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--white);
+  font-family: 'Hiragino Sans GB', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ---------- Scanline overlay (subtle) ---------- */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 3px,
+    rgba(0,0,0,0.08) 3px,
+    rgba(0,0,0,0.08) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ---------- Header ---------- */
+header {
+  text-align: center;
+  padding: 56px 24px 40px;
+  position: relative;
+}
+
+.site-title {
+  font-family: var(--pixel);
+  font-size: clamp(1.4rem, 4vw, 2.6rem);
+  color: var(--gold);
+  text-shadow:
+    4px 4px 0 #a67c00,
+    0 0 40px rgba(255,215,0,0.4);
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  animation: flicker 6s infinite;
+}
+
+.site-subtitle {
+  font-family: var(--pixel);
+  font-size: clamp(0.45rem, 1.4vw, 0.75rem);
+  color: var(--accent2);
+  margin-top: 16px;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 12px var(--accent2);
+}
+
+/* Pixel divider */
+.pixel-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 32px auto 0;
+  max-width: 600px;
+}
+
+.pixel-divider::before,
+.pixel-divider::after {
+  content: '';
+  flex: 1;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  image-rendering: pixelated;
+}
+
+.pixel-divider-icon {
+  font-size: 1.2rem;
+  filter: drop-shadow(0 0 6px var(--gold));
+}
+
+/* ---------- Main content ---------- */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+
+/* ---------- Section label ---------- */
+.section-label {
+  font-family: var(--pixel);
+  font-size: 0.55rem;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  padding-left: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ---------- Comic Grid ---------- */
+.comic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 28px;
+}
+
+/* ---------- Comic Card ---------- */
+.comic-card {
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  position: relative;
+}
+
+.comic-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(139,92,246,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.comic-card:hover {
+  transform: translateY(-5px) scale(1.01);
+  border-color: var(--gold-dim);
+  box-shadow:
+    0 12px 40px rgba(0,0,0,0.6),
+    0 0 20px rgba(255,215,0,0.12);
+}
+
+/* Cover image — square crop */
+.card-cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  cursor: pointer;
+  background: #0a0a18;
+}
+
+.card-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.card-cover:hover img {
+  transform: scale(1.04);
+  filter: brightness(1.08);
+}
+
+/* Hover overlay hint */
+.card-cover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+
+.card-cover:hover .card-cover-overlay {
+  opacity: 1;
+}
+
+.cover-overlay-text {
+  font-family: var(--pixel);
+  font-size: 0.6rem;
+  color: var(--gold);
+  text-shadow: 0 0 10px var(--gold);
+  letter-spacing: 0.12em;
+  padding: 8px 14px;
+  border: 1px solid var(--gold);
+  background: rgba(0,0,0,0.6);
+}
+
+/* Card body */
+.card-body {
+  padding: 18px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+/* Date badge */
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.date-badge {
+  font-family: var(--pixel);
+  font-size: 0.45rem;
+  color: var(--bg);
+  background: var(--gold);
+  padding: 4px 8px;
+  letter-spacing: 0.05em;
+  display: inline-block;
+  image-rendering: pixelated;
+}
+
+.episode-badge {
+  font-family: var(--pixel);
+  font-size: 0.45rem;
+  color: var(--accent2);
+  border: 1px solid var(--accent2);
+  padding: 3px 8px;
+  letter-spacing: 0.05em;
+}
+
+/* Card title */
+.card-title {
+  font-family: var(--pixel);
+  font-size: clamp(0.5rem, 1.2vw, 0.7rem);
+  color: var(--white);
+  line-height: 1.8;
+  letter-spacing: 0.03em;
+}
+
+/* Card description */
+.card-desc {
+  font-size: 0.82rem;
+  color: #aaa8cc;
+  line-height: 1.7;
+  flex: 1;
+}
+
+/* Button */
+.btn-view {
+  font-family: var(--pixel);
+  font-size: 0.5rem;
+  color: var(--bg);
+  background: var(--gold);
+  border: none;
+  padding: 10px 16px;
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 4px;
+  align-self: flex-start;
+  transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+  image-rendering: pixelated;
+  box-shadow: 3px 3px 0 #a67c00;
+  position: relative;
+}
+
+.btn-view:hover {
+  background: #ffe44d;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #a67c00;
+}
+
+.btn-view:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #a67c00;
+}
+
+/* Card pixel corner accents */
+.comic-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  background: var(--border);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+/* ---------- Lightbox ---------- */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.lightbox-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lightbox-inner {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-inner img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  display: block;
+  border: 2px solid var(--border);
+  box-shadow: 0 0 60px rgba(255,215,0,0.15);
+  transform: scale(0.9);
+  transition: transform 0.25s ease;
+}
+
+.lightbox-overlay.active .lightbox-inner img {
+  transform: scale(1);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  width: 36px;
+  height: 36px;
+  background: var(--gold);
+  color: var(--bg);
+  border: none;
+  cursor: pointer;
+  font-family: var(--pixel);
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3px 3px 0 #a67c00;
+  transition: transform 0.1s;
+  z-index: 1;
+}
+
+.lightbox-close:hover { background: #ffe44d; transform: scale(1.1); }
+.lightbox-close:active { transform: scale(0.95); }
+
+/* ---------- Footer ---------- */
+footer {
+  text-align: center;
+  padding: 28px 20px 36px;
+  border-top: 1px solid var(--border);
+}
+
+.footer-text {
+  font-family: var(--pixel);
+  font-size: 0.42rem;
+  color: #555580;
+  letter-spacing: 0.1em;
+}
+
+.footer-text a {
+  color: var(--gold-dim);
+  text-decoration: none;
+}
+
+/* ---------- Flicker animation ---------- */
+@keyframes flicker {
+  0%, 97%, 100% { opacity: 1; }
+  98%            { opacity: 0.85; }
+  99%            { opacity: 1; }
+  99.5%          { opacity: 0.7; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .comic-grid {
+    grid-template-columns: 1fr;
+  }
+  .site-title {
+    font-size: 1.2rem;
+  }
+  .site-subtitle {
+    font-size: 0.5rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .comic-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
