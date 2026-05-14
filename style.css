@@ -78,6 +78,14 @@ header {
   text-shadow: 0 0 12px var(--accent2);
 }
 
+.site-intro {
+  max-width: 720px;
+  margin: 22px auto 0;
+  color: #b9b7da;
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+
 /* Pixel divider */
 .pixel-divider {
   display: flex;
@@ -128,6 +136,107 @@ main {
   flex: 1;
   height: 1px;
   background: var(--border);
+}
+
+/* ---------- Creator Note ---------- */
+.creator-section {
+  margin-bottom: 56px;
+}
+
+.creator-profile {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+  background:
+    linear-gradient(135deg, rgba(255,215,0,0.08), transparent 38%),
+    var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  padding: 26px;
+  position: relative;
+  overflow: hidden;
+}
+
+.creator-profile::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+.creator-avatar-wrap,
+.creator-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.creator-avatar-wrap {
+  width: 150px;
+}
+
+.creator-avatar {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+  border: 2px solid var(--gold-dim);
+  box-shadow:
+    8px 8px 0 rgba(6,182,212,0.18),
+    0 0 24px rgba(255,215,0,0.12);
+}
+
+.creator-eyebrow {
+  font-family: var(--pixel);
+  font-size: 0.45rem;
+  color: var(--accent2);
+  letter-spacing: 0.16em;
+  margin-bottom: 10px;
+}
+
+.creator-name {
+  font-family: var(--pixel);
+  font-size: clamp(0.82rem, 2vw, 1.15rem);
+  line-height: 1.7;
+  color: var(--gold);
+  margin-bottom: 14px;
+  text-shadow: 3px 3px 0 rgba(166,124,0,0.55);
+}
+
+.creator-lead {
+  color: #f0eac8;
+  font-size: 1rem;
+  line-height: 1.9;
+  margin-bottom: 12px;
+}
+
+.creator-text {
+  color: #aaa8cc;
+  font-size: 0.9rem;
+  line-height: 1.9;
+  margin-top: 10px;
+}
+
+.creator-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.creator-tags span {
+  color: var(--bg);
+  background: var(--gold);
+  border: 1px solid #a67c00;
+  box-shadow: 3px 3px 0 #a67c00;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  padding: 6px 10px;
 }
 
 /* ---------- Comic Grid ---------- */
@@ -409,6 +518,25 @@ footer {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 640px) {
+  header {
+    padding: 44px 20px 28px;
+  }
+  main {
+    padding: 32px 16px 52px;
+  }
+  .site-intro {
+    font-size: 0.86rem;
+  }
+  .creator-profile {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+  }
+  .creator-avatar-wrap,
+  .creator-avatar {
+    width: 112px;
+    height: 112px;
+  }
   .comic-grid {
     grid-template-columns: 1fr;
   }
