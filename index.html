@@ -15,7 +15,11 @@
   <header>
     <h1 class="site-title">赛博史记</h1>
     <p class="site-subtitle">猫主持人宇宙漫画集</p>
-    <p class="site-intro">把 AI 知识推文里的启发、猫咪 IP 的可爱和四宫格叙事的设计实验，收集成一本正在生长的赛博漫画手账。</p>
+    <p class="site-intro">把 AI 知识推文里的启发、猫咪 IP 的可爱和四宫格叙事的设计实验，收集成一本正在生长的赛博漫画手账，也记录关于人宠智能体的创作思考。</p>
+    <nav class="site-nav" aria-label="页面分区">
+      <a href="#comics">漫画专区</a>
+      <a href="#creator">创作者专区</a>
+    </nav>
     <div class="pixel-divider">
       <span class="pixel-divider-icon">🐾</span>
     </div>
@@ -23,31 +27,11 @@
 
   <!-- ░░░ MAIN ░░░ -->
   <main>
-    <section class="creator-section" aria-labelledby="creator-title">
-      <p class="section-label">CREATOR NOTE</p>
-      <div class="creator-profile">
-        <div class="creator-avatar-wrap">
-          <img class="creator-avatar" src="assets/creator-avatar.jpg" alt="创作者小金鱼箱子的头像" loading="eager" decoding="async" />
-        </div>
-        <div class="creator-copy">
-          <p class="creator-eyebrow">创作者</p>
-          <h2 id="creator-title" class="creator-name">小金鱼箱子</h2>
-          <p class="creator-lead">我做《赛博史记》，最早是因为在书店看到有人用宫格漫画记录日常：每一页都是生活气息，最后还能成为一本书。那一刻我觉得，把自己长期被触动的东西画下来，是很有人生价值的事。</p>
-          <p class="creator-text">这个系列源于“赛博禅心”的名字、文章内容和猫咪头像灵感。我作为读者和粉丝，把他的 AI 知识推文、我的设计理解与素材收集，改编成猫咪主题四宫格插画。每期都会发给原作者本人，保持知情与尊重，也尽量不把形象过分魔改。</p>
-          <p class="creator-text">我真正想探索的是一套“萌宠主题插画设计系统”：让宠物、日常、知识和情绪都能被温柔地记录下来。每一期尝试不同画风和四宫格主题，是为了让未来的萌宠漫画应用拥有更多选择，也为了先把那句“获奖感言”悄悄排练好。万一呢，对吧。</p>
-          <div class="creator-tags" aria-label="创作关键词">
-            <span>粉丝向改编</span>
-            <span>AI 知识推文</span>
-            <span>猫咪四宫格</span>
-            <span>萌宠设计系统</span>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section class="comics-section" id="comics" aria-labelledby="comics-title">
+      <p class="section-label">COMIC ZONE</p>
+      <h2 id="comics-title" class="section-title">漫画专区</h2>
 
-    <p class="section-label">LATEST ISSUES</p>
-
-    <div class="comic-grid">
+      <div class="comic-grid">
 
       <!-- ── 第 12 期 ── -->
       <article class="comic-card">
@@ -202,7 +186,113 @@
         </div>
       </article>
 
-    </div><!-- /comic-grid -->
+      </div><!-- /comic-grid -->
+    </section>
+
+    <section class="creator-zone" id="creator" aria-labelledby="creator-zone-title">
+      <p class="section-label">CREATOR ZONE</p>
+      <h2 id="creator-zone-title" class="section-title">创作者专区</h2>
+      <p class="section-intro">这里收集《赛博史记》背后的创作动机、设计判断，以及我对未来人宠智能体的长期思考。</p>
+
+      <article class="creator-profile" aria-labelledby="creator-title">
+        <div class="creator-avatar-wrap">
+          <img class="creator-avatar" src="assets/creator-avatar.jpg" alt="创作者小金鱼箱子的头像" loading="lazy" decoding="async" />
+        </div>
+        <div class="creator-copy">
+          <p class="creator-eyebrow">创作者手记</p>
+          <h3 id="creator-title" class="creator-name">小金鱼箱子</h3>
+          <p class="creator-lead">我做《赛博史记》，最早是因为在书店看到有人用宫格漫画记录日常：每一页都是生活气息，最后还能成为一本书。那一刻我觉得，把自己长期被触动的东西画下来，是很有人生价值的事。</p>
+          <p class="creator-text">这个系列源于“赛博禅心”的名字、文章内容和猫咪头像灵感。我作为读者和粉丝，把他的 AI 知识推文、我的设计理解与素材收集，改编成猫咪主题四宫格插画。每期都会发给原作者本人，保持知情与尊重，也尽量不把形象过分魔改。</p>
+          <p class="creator-text">我真正想探索的是一套“萌宠主题插画设计系统”：让宠物、日常、知识和情绪都能被温柔地记录下来。每一期尝试不同画风和四宫格主题，是为了让未来的萌宠漫画应用拥有更多选择，也为了先把那句“获奖感言”悄悄排练好。万一呢，对吧。</p>
+          <div class="creator-tags" aria-label="创作关键词">
+            <span>粉丝向改编</span>
+            <span>AI 知识推文</span>
+            <span>猫咪四宫格</span>
+            <span>萌宠设计系统</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="insight-section" aria-labelledby="agent-title">
+        <div class="insight-heading">
+          <p class="creator-eyebrow">创作洞察</p>
+          <h3 id="agent-title" class="insight-title">人宠智能体的 5 个核心设计点</h3>
+          <p class="insight-summary">它们不是功能堆砌，而是从人与宠物的日常对话里自然生长出来的哲学骨架：不神话宠物，不绑架主人，认真维护信任，并愿意一起成长。</p>
+        </div>
+
+        <div class="knowledge-graph" aria-label="人宠智能体核心设计点知识图谱">
+          <svg class="graph-lines" viewBox="0 0 1000 620" aria-hidden="true" focusable="false">
+            <path d="M500 310 C410 250 320 190 210 130" />
+            <path d="M500 310 C500 230 500 170 500 105" />
+            <path d="M500 310 C590 250 680 190 790 130" />
+            <path d="M500 310 C420 390 350 450 270 510" />
+            <path d="M500 310 C580 390 650 450 730 510" />
+          </svg>
+
+          <div class="graph-core">
+            <span>人宠智能体</span>
+            <strong>温柔又清醒的共同生活系统</strong>
+          </div>
+          <div class="graph-node graph-trust">
+            <span>01</span>
+            <strong>信任翻译官</strong>
+            <em>看见脆弱背后的信任</em>
+          </div>
+          <div class="graph-node graph-signal">
+            <span>02</span>
+            <strong>异常信号放大器</strong>
+            <em>放大关键开口</em>
+          </div>
+          <div class="graph-node graph-duty">
+            <span>03</span>
+            <strong>责任唤醒机制</strong>
+            <em>把关心变成行动</em>
+          </div>
+          <div class="graph-node graph-silence">
+            <span>04</span>
+            <strong>沉默共存模式</strong>
+            <em>不制造无效打扰</em>
+          </div>
+          <div class="graph-node graph-growth">
+            <span>05</span>
+            <strong>共同成长日志</strong>
+            <em>记录双向理解</em>
+          </div>
+        </div>
+
+        <div class="insight-grid">
+          <section class="insight-card">
+            <span class="insight-number">01</span>
+            <h4>信任翻译官</h4>
+            <p>不仅识别宠物行为，更翻译“愿意暴露不适”背后的信任信号。当猫躲藏或过度舔毛时，智能体提醒主人温柔回应这份脆弱，而不是责备。</p>
+          </section>
+
+          <section class="insight-card">
+            <span class="insight-number">02</span>
+            <h4>异常信号放大器</h4>
+            <p>区分日常沉默与关键开口，放大反复出现却容易被忽略的异常，也敏感捕捉主人记录变少、反馈变短背后的困扰。</p>
+          </section>
+
+          <section class="insight-card">
+            <span class="insight-number">03</span>
+            <h4>责任唤醒机制</h4>
+            <p>不只提供治愈感，也在宠物持续不适时明确引导行动：测体温、看排泄、联系兽医。治愈是双向的，此刻轮到人来守护它。</p>
+          </section>
+
+          <section class="insight-card">
+            <span class="insight-number">04</span>
+            <h4>沉默共存模式</h4>
+            <p>尊重大多数时间的安静，不制造无效互动。默认静默监听，只在主人主动询问、异常出现，或长期困惑需要整理时介入。</p>
+          </section>
+
+          <section class="insight-card">
+            <span class="insight-number">05</span>
+            <h4>共同成长日志</h4>
+            <p>帮助主人从赋予意义走向理解本体，记录每一次正确响应、误解修正和承认无知，让人和宠物都在被理解中慢慢成长。</p>
+          </section>
+        </div>
+      </article>
+    </section>
   </main>
 
   <!-- ░░░ FOOTER ░░░ -->

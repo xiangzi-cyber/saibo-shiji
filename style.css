@@ -86,6 +86,33 @@ header {
   line-height: 1.9;
 }
 
+.site-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.site-nav a {
+  color: var(--bg);
+  background: var(--gold);
+  border: 1px solid #a67c00;
+  box-shadow: 3px 3px 0 #a67c00;
+  font-family: var(--pixel);
+  font-size: 0.5rem;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  padding: 9px 12px;
+  text-decoration: none;
+  transition: transform 0.1s, box-shadow 0.15s;
+}
+
+.site-nav a:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #a67c00;
+}
+
 /* Pixel divider */
 .pixel-divider {
   display: flex;
@@ -138,9 +165,30 @@ main {
   background: var(--border);
 }
 
-/* ---------- Creator Note ---------- */
-.creator-section {
-  margin-bottom: 56px;
+.section-title {
+  font-family: var(--pixel);
+  color: var(--gold);
+  font-size: clamp(0.8rem, 2vw, 1.2rem);
+  line-height: 1.8;
+  margin: -12px 0 24px;
+  text-shadow: 3px 3px 0 rgba(166,124,0,0.55);
+}
+
+.section-intro {
+  max-width: 760px;
+  color: #b9b7da;
+  font-size: 0.95rem;
+  line-height: 1.9;
+  margin: -10px 0 26px;
+}
+
+.comics-section,
+.creator-zone {
+  scroll-margin-top: 24px;
+}
+
+.creator-zone {
+  margin-top: 68px;
 }
 
 .creator-profile {
@@ -237,6 +285,221 @@ main {
   font-size: 0.78rem;
   line-height: 1.4;
   padding: 6px 10px;
+}
+
+/* ---------- Creator Insights ---------- */
+.insight-section {
+  margin-top: 32px;
+}
+
+.insight-heading {
+  margin-bottom: 24px;
+}
+
+.insight-title {
+  font-family: var(--pixel);
+  color: var(--white);
+  font-size: clamp(0.75rem, 1.6vw, 1rem);
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+
+.insight-summary {
+  max-width: 820px;
+  color: #aaa8cc;
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+
+.knowledge-graph {
+  position: relative;
+  min-height: 620px;
+  margin: 24px 0 28px;
+  background:
+    radial-gradient(circle at center, rgba(255,215,0,0.12), transparent 34%),
+    radial-gradient(circle at 20% 20%, rgba(6,182,212,0.1), transparent 24%),
+    radial-gradient(circle at 80% 78%, rgba(139,92,246,0.12), transparent 26%),
+    var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.knowledge-graph::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.32;
+  pointer-events: none;
+}
+
+.graph-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.graph-lines path {
+  fill: none;
+  stroke: rgba(255,215,0,0.28);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 8 10;
+}
+
+.graph-core,
+.graph-node {
+  position: absolute;
+  z-index: 2;
+  border: 2px solid var(--border);
+  background: rgba(13,13,26,0.9);
+  border-radius: 4px;
+  backdrop-filter: blur(6px);
+}
+
+.graph-core {
+  left: 50%;
+  top: 50%;
+  width: 280px;
+  min-height: 150px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  border-color: var(--gold-dim);
+  box-shadow:
+    0 0 0 8px rgba(255,215,0,0.06),
+    0 0 34px rgba(255,215,0,0.18);
+}
+
+.graph-core span {
+  color: var(--accent2);
+  font-family: var(--pixel);
+  font-size: 0.55rem;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.graph-core strong {
+  color: var(--gold);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.graph-node {
+  width: 250px;
+  min-height: 120px;
+  padding: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.28);
+}
+
+.graph-node::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 16px rgba(255,215,0,0.8);
+}
+
+.graph-trust { left: 7%; top: 9%; }
+.graph-signal { left: 50%; top: 5%; transform: translateX(-50%); }
+.graph-duty { right: 7%; top: 9%; }
+.graph-silence { left: 13%; bottom: 9%; }
+.graph-growth { right: 13%; bottom: 9%; }
+
+.graph-trust::after { right: -7px; bottom: -7px; }
+.graph-signal::after { left: 50%; bottom: -7px; transform: translateX(-50%); }
+.graph-duty::after { left: -7px; bottom: -7px; }
+.graph-silence::after { right: -7px; top: -7px; }
+.graph-growth::after { left: -7px; top: -7px; }
+
+.graph-node span {
+  display: inline-block;
+  color: var(--bg);
+  background: var(--gold);
+  font-family: var(--pixel);
+  font-size: 0.42rem;
+  padding: 4px 6px;
+  margin-bottom: 12px;
+}
+
+.graph-node strong {
+  display: block;
+  color: var(--white);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.graph-node em {
+  display: block;
+  color: #aaa8cc;
+  font-style: normal;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.insight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.insight-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  padding: 18px;
+  overflow: hidden;
+}
+
+.insight-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(139,92,246,0.08), transparent 64%);
+  pointer-events: none;
+}
+
+.insight-number,
+.insight-card h4,
+.insight-card p {
+  position: relative;
+  z-index: 1;
+}
+
+.insight-number {
+  display: inline-block;
+  color: var(--bg);
+  background: var(--gold);
+  font-family: var(--pixel);
+  font-size: 0.42rem;
+  padding: 4px 7px;
+  margin-bottom: 12px;
+}
+
+.insight-card h4 {
+  color: var(--white);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.insight-card p {
+  color: #aaa8cc;
+  font-size: 0.86rem;
+  line-height: 1.8;
 }
 
 /* ---------- Comic Grid ---------- */
@@ -527,6 +790,16 @@ footer {
   .site-intro {
     font-size: 0.86rem;
   }
+  .site-nav a {
+    font-size: 0.45rem;
+    padding: 8px 10px;
+  }
+  .section-title {
+    font-size: 0.78rem;
+  }
+  .creator-zone {
+    margin-top: 52px;
+  }
   .creator-profile {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -536,6 +809,30 @@ footer {
   .creator-avatar {
     width: 112px;
     height: 112px;
+  }
+  .knowledge-graph {
+    display: grid;
+    gap: 14px;
+    min-height: auto;
+    padding: 18px;
+  }
+  .knowledge-graph::before,
+  .graph-lines {
+    display: none;
+  }
+  .graph-core,
+  .graph-node {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    width: 100%;
+    min-height: auto;
+    transform: none;
+  }
+  .graph-node::after {
+    display: none;
   }
   .comic-grid {
     grid-template-columns: 1fr;
